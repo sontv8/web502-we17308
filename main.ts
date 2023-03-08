@@ -20,18 +20,54 @@ export { }
 // }
 // sum(10, 20)
 
-const project: { id: number, name: string, image: string, link: string, status: boolean } = {
+
+const arrNumber: number[] = []
+const projectList: { id: number, name: string }[] = [
+    { id: 1, name: "Du an 1" },
+    { id: 2, name: "Du an 2" }
+]
+
+const getData = (arrList: { id: number, name: string }[]): { id: number, name: string }[] => {
+    return arrList
+}
+
+// định nghĩa kiểu dữ liệu với interface 
+/* Object */
+
+
+// const project: { id: number, name: string, image: string, link: string, status: boolean } = {
+//     id: 1,
+//     name: "Du an mau",
+//     image: "http://...",
+//     link: "http://...",
+//     status: true
+// }
+
+// const getProject = (props: { id: number, name: string, image: string, link: string, status: boolean }): { id: number, name: string, image: string, link: string, status: boolean } => {
+//     return props
+// }
+// const demo = {
+//     id: 123
+// }
+// console.log(getProject(project));
+
+interface Project {
+    id: number,
+    name: string,
+    image: string,
+    link: string,
+    status: boolean
+}
+const project: Project = {
     id: 1,
     name: "Du an mau",
     image: "http://...",
     link: "http://...",
     status: true
 }
-
-const getProject = (props: { id: number, name: string, image: string, link: string, status: boolean }): { id: number, name: string, image: string, link: string, status: boolean } => {
+const getProject = (props: Project): Project => {
     return props
 }
-const demo = {
-    id: 123
-}
-console.log(getProject(project));
+getProject(project)
+/* Array */
+/* Function */ 
