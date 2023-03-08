@@ -21,15 +21,6 @@ export { }
 // sum(10, 20)
 
 
-const arrNumber: number[] = []
-const projectList: { id: number, name: string }[] = [
-    { id: 1, name: "Du an 1" },
-    { id: 2, name: "Du an 2" }
-]
-
-const getData = (arrList: { id: number, name: string }[]): { id: number, name: string }[] => {
-    return arrList
-}
 
 // định nghĩa kiểu dữ liệu với interface 
 /* Object */
@@ -69,5 +60,38 @@ const getProject = (props: Project): Project => {
     return props
 }
 getProject(project)
+
+
 /* Array */
-/* Function */ 
+
+
+// const arrNumber: number[] = []
+// const projectList: { id: number, name: string }[] = [
+//     { id: 1, name: "Du an 1" },
+//     { id: 2, name: "Du an 2" }
+// ]
+
+// const getData = (arrList: { id: number, name: string }[]): { id: number, name: string }[] => {
+//     return arrList
+// }
+
+interface ProjectList {
+    id: number,
+    name: string
+}
+// const getData = (arrList: ProjectList[]): ProjectList[] => {
+//     return arrList
+// }
+// const getData = (arrList: Array<ProjectList>): Array<ProjectList> => {
+//     return arrList
+// }
+// generics + enum
+
+/* Function */
+
+interface SumFunction {
+    (a: number, b: number): number
+}
+const sum: SumFunction = (a, b) => {
+    return a + b;
+}
