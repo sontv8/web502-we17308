@@ -95,3 +95,51 @@ interface SumFunction {
 const sum: SumFunction = (a, b) => {
     return a + b;
 }
+
+// định nghĩa kiểu dữ liệu với type
+/* Object */
+type Product = {
+    id: number,
+    name: string
+}
+const product: Product = {
+    id: 1,
+    name: "abcd"
+}
+/* Array */
+
+type ProductList = { id: number, name: string }[]
+const productList: ProductList = [
+    { id: 1, name: "abcd" }
+]
+/* Function */
+type AddFunction = (a: number, b: number) => number
+const add: AddFunction = (a, b) => {
+    return 123
+}
+
+
+// interface Person {
+//     id: number,
+//     username: string
+// }
+// interface Employee extends Person {
+//     email: string
+// }
+// const sontv: Employee = {
+//     id: 1,
+//     username: "sontv",
+//     email: "abc@gmail.com"
+// }
+
+type Person = {
+    id: number | string,
+    username: string
+}
+type Emloyee = { email: string }
+type Manager = Person & Emloyee
+const sontv: Manager = {
+    id: "1",
+    username: "sontv",
+    email: "abc@gmail.com"
+}
