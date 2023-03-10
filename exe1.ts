@@ -23,4 +23,24 @@ const listProject = (projects: IProject[]): void => {
 
     }
 }
-listProject(projectList)
+// listProject(projectList)
+
+// Them moi
+const addProject = (projects: IProject[], project: IProject): IProject[] => {
+    projects.push(project)
+    return projects
+}
+const project: IProject = {
+    id: projectList.length + 1,
+    name: "new project",
+    image: "http://..."
+}
+addProject(projectList, project)
+
+
+// Xoa
+const deleteProject = (projects: IProject[], id: number): IProject[] => {
+    const newProjects = projects.filter((item) => item.id != id)
+    return newProjects
+}
+// deleteProject(2)
