@@ -13,6 +13,12 @@ function App() {
       .then(response => response.json())
       .then(data => setProducts(data))
   }, [])
+  function removeProduct(id) {
+    // console.log(id);
+    fetch('http://localhost:3000/products/' + id, {
+      method: 'DELETE'
+    }).then(() => setProducts(products.filter(item => item.id !== id)))
+  }
   return (
     <div className="App">
       {count}
@@ -20,7 +26,7 @@ function App() {
       {products.map((item) => {
         return <div key={item.id}>
           <h3>{item.name}</h3>
-          <button>Remove</button>
+          <button onClick={() => removeProduct(item.id)}>Remove</button>
         </div>
       })}
     </div>
