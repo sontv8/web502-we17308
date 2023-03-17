@@ -1,18 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 // import './index.css'
-const a = 10;
-const b = 20;
-function sum(a, b) {
-  return a + b
-}
-function Sum({ a, b }) {
-  return <div>{+a + +b}</div>
-}
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 
-  <App />
 
 
 )
