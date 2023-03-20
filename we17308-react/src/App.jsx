@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import ProductDetailPage from './pages/ProductDetail'
 import Dashboard from './pages/admin/Dashboard'
 import { delteProduct, getAllProduct } from './api/product'
+import ProductAdd from './pages/admin/ProductAdd'
 
 function App() {
   const [products, setProducts] = useState([])
@@ -21,12 +22,23 @@ function App() {
     // }).then(() => setProducts(products.filter(item => item.id !== id)))
     delteProduct(id).then(() => setProducts(products.filter(item => item.id !== id)))
   }
+
+  const onHandleAdd = (product) => {
+    console.log('app.js', product)
+    setProducts([...products, { ...product, id: 1 }])
+  }
+
+
+
   return (
     <div className="App">
+
+
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/products' element={<ProductPage products={products} onRemove={onHandleRemove} />} />
         <Route path='/products/:id' element={<ProductDetailPage />} />
+        <Route path="/product/add" element={<ProductAdd onAdd={onHandleAdd} />} />
         <Route path='/admin' element={<Dashboard />} />
       </Routes>
 
@@ -35,3 +47,22 @@ function App() {
 }
 
 export default App
+
+
+
+
+
+// ví dụ app.js
+// function onHandleAdd(product){
+//   console.log(product)
+// }
+// productAdd({onAdd: onHandleAdd, products: []}); // 3
+
+
+
+
+
+// // ví dụ add.js
+// function productAdd({onAdd, products }){
+//   onAdd(a + b);
+// }
