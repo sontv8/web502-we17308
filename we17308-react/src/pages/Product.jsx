@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const ProductPage = (props) => {
+
     const [data, setData] = useState([])
     useEffect(() => {
         setData(props.products)
@@ -8,9 +9,7 @@ const ProductPage = (props) => {
 
     function removeProduct(id) {
         // console.log(id);
-        fetch('http://localhost:3000/products/' + id, {
-            method: 'DELETE'
-        }).then(() => setData(data.filter(item => item.id !== id)))
+        props.onRemove(id)
     }
     return (
         <div>
