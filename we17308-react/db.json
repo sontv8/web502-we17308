@@ -11,6 +11,11 @@
     {
       "id": 3,
       "name": "Product C"
+    },
+    {
+      "id": 4,
+      "name": "Product D",
+      "price": 500
     }
   ]
 }

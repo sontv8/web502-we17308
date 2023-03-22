@@ -7,6 +7,7 @@ import ProductDetailPage from './pages/ProductDetail'
 import Dashboard from './pages/admin/Dashboard'
 import { delteProduct, getAllProduct } from './api/product'
 import ProductAdd from './pages/admin/ProductAdd'
+import UpdateProductPage from './pages/admin/UpdateProduct'
 
 function App() {
   const [products, setProducts] = useState([])
@@ -28,7 +29,9 @@ function App() {
     setProducts([...products, { ...product, id: 1 }])
   }
 
+  const onHandleUpdate = (product) => {
 
+  }
 
   return (
     <div className="App">
@@ -40,6 +43,7 @@ function App() {
         <Route path='/products/:id' element={<ProductDetailPage />} />
         <Route path="/product/add" element={<ProductAdd onAdd={onHandleAdd} />} />
         <Route path='/admin' element={<Dashboard />} />
+        <Route path='/admin/products/:id/update' element={<UpdateProductPage products={products} />} />
       </Routes>
 
     </div>
