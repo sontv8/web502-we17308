@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ProductAdd = ({ onAdd }) => {
-    const [valueInput, setValueInput] = useState({
+const ProductAdd = (props) => { // khai báo component ProductAdd và nhận props chứa data là onAdd
+    const [valueInput, setValueInput] = useState({ // khai báo state valueInput và setValueInput
         name: "",
         price: 0
     });
-    const navigate = useNavigate();
-    const onHandleChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setValueInput({ ...valueInput, [name]: value })
+    const navigate = useNavigate(); // khai báo navigate để chuyển hướng
+    const onHandleChange = (e) => { // khai báo hàm onHandleChange để lấy giá trị của input khi thay đổi
+        const name = e.target.name; // lấy name của input
+        const value = e.target.value; // lấy value của input
+        setValueInput({ ...valueInput, [name]: value }) // gán giá trị của input vào state valueInput
     }
-    const onHandleSubmit = (e) => {
+    const onHandleSubmit = (e) => { // khai báo hàm onHandleSubmit để xử lý khi submit form
         e.preventDefault();
-        onAdd(valueInput)
+        props.onAdd(valueInput) // gọi hàm onAdd truyền vào giá trị là valueInput
         // onAdd({
         //     name: value
         // });
-        // navigate('/products')
+        navigate('/admin/products') // chuyển hướng đến trang /admin/products
     }
     return (
         <form onSubmit={onHandleSubmit}>

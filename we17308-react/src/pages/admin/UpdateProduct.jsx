@@ -24,7 +24,7 @@ const UpdateProductPage = (props) => {
 
             id, name, price
         */
-        console.log(updateData);
+        props.onUpdate(updateData);
     }
     return (
         <div>
