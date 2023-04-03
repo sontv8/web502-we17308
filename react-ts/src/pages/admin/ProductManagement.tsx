@@ -1,16 +1,20 @@
 import React from 'react'
 import { Space, Table, Button } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+import { IProduct } from '../../types/product';
 
 interface DataType {
-    key: string;
+    key: string | number;
+    id: number;
     name: string;
-    age: number;
-    address: string;
-    tags: string[];
+    price: number;
+}
+interface IProps {
+    products: IProduct[],
+    onRemove: (id: number) => void
 }
 
-const ProductManagementPage = (props) => {
+const ProductManagementPage = (props: IProps) => {
     const removeProduct = (id: number) => {
         props.onRemove(id)
     }
@@ -38,7 +42,7 @@ const ProductManagementPage = (props) => {
         },
     ];
 
-    const data: DataType[] = props.products.map(item => {
+    const data: DataType[] = props.products.map((item: IProduct) => {
         return {
             key: item.id,
             ...item
