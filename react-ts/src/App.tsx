@@ -10,18 +10,18 @@ import ProductDetailPage from './pages/ProductDetail'
 import { IProduct } from './types/product'
 
 function App() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<IProduct[]>([])
   useEffect(() => {
     getAllProduct().then(({ data }) => setProducts(data))
   }, [])
   const onHandleRemove = (id: number) => {
-    deleteProduct(id)
+    deleteProduct(id).then(() => setProducts(products.filter((item: IProduct) => item.id !== id)))
   }
   const onHandleAdd = (product: IProduct) => {
-    addProduct(product)
+    addProduct(product).then(() => getAllProduct().then(({ data }) => setProducts(data)))
   }
   const onHandleUpdate = (product: IProduct) => {
-    updateProduct(product)
+    updateProduct(product).then(() => getAllProduct().then(({ data }) => setProducts(data)))
   }
   return (
     <div className="App">

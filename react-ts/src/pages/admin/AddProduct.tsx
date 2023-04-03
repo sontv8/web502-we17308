@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { IProduct } from '../../types/product'
 import { Button, Checkbox, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
     onAdd: (product: IProduct) => void
@@ -22,8 +23,11 @@ const AddProductPage = (props: IProps) => {
     //     props.onAdd(data);
     // }
 
+    const navigate = useNavigate()
+
     const onFinish = (values: any) => {
         props.onAdd(values);
+        navigate('/admin/products')
     };
 
     const onFinishFailed = (errorInfo: any) => {

@@ -2,6 +2,7 @@ import React from 'react'
 import { Space, Table, Button } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { IProduct } from '../../types/product';
+import { Link } from 'react-router-dom'
 
 interface DataType {
     key: string | number;
@@ -37,6 +38,7 @@ const ProductManagementPage = (props: IProps) => {
 
                 <Space size="middle">
                     <Button type="primary" style={{ backgroundColor: 'red' }} onClick={() => removeProduct(record.id)}>Remove</Button>
+                    <Button type="primary" ><Link to={`/admin/products/${record.id}/update`}>Update</Link></Button>
                 </Space>
             ),
         },
@@ -49,7 +51,12 @@ const ProductManagementPage = (props: IProps) => {
         }
     })
 
-    return <Table columns={columns} dataSource={data} pagination={{ pageSize: 2 }} />
+    return (
+        <div>
+            <Button type='primary'><Link to={'/admin/products/add'}>Add New Product</Link></Button>
+            <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />
+        </div>
+    )
 }
 
 export default ProductManagementPage

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { IProduct } from '../../types/product'
 import { Button, Form, Input } from 'antd';
 interface IProps {
@@ -9,6 +9,7 @@ interface IProps {
 }
 const UpdateProductPage = (props: IProps) => {
     const { id } = useParams()
+    const navigate = useNavigate()
     // const { register, handleSubmit, reset } = useForm()
     // useEffect(() => {
     //     const currentProduct = props.products.find((product) => product.id === Number(id))
@@ -43,6 +44,7 @@ const UpdateProductPage = (props: IProps) => {
 
     const onFinish = (values: any) => {
         props.onUpdate(values);
+        navigate('/admin/products')
     };
 
     return (
@@ -89,7 +91,7 @@ const UpdateProductPage = (props: IProps) => {
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit">
-                        Add New Product
+                        Update Product
                     </Button>
                 </Form.Item>
             </Form>
