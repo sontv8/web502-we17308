@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { getAllProduct } from './api/product'
-import './App.css'
+import { addProduct, getAllProduct, updateProduct } from './api/product'
+import AddProductPage from './pages/admin/AddProduct'
+import UpdateProductPage from './pages/admin/UpdateProduct'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/Product'
+import ProductDetailPage from './pages/ProductDetail'
+import { IProduct } from './types/product'
 
 function App() {
   const [products, setProducts] = useState([])
@@ -13,12 +16,25 @@ function App() {
   const onHandleRemove = (id: number) => {
 
   }
+  const onHandleAdd = (product: IProduct) => {
+    addProduct(product)
+  }
+  const onHandleUpdate = (product: IProduct) => {
+    updateProduct(product)
+  }
   return (
     <div className="App">
       <Routes>
         <Route path='/'>
           <Route index element={<HomePage />} />
           <Route path='products' element={<ProductPage products={products} onRemove={onHandleRemove} />} />
+          <Route path='products/:id' element={<ProductDetailPage products={products} />} />
+        </Route>
+        <Route path='/admin'>
+          <Route path='products'>
+            <Route path='add' element={<AddProductPage onAdd={onHandleAdd} />} />
+            <Route path=':id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} />
+          </Route>
         </Route>
       </Routes>
     </div>

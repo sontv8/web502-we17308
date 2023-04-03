@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
-interface IProduct {
-    id: number,
-    name: string,
-    price: number
-}
-interface IProps {
-    products: IProduct[],
-    onRemove: (id: number) => void
+import { IProduct } from '../types/product'
+interface IProps { // định nghĩa kiểu dữ liệu cho props truyền vào component
+    products: IProduct[], // định nghĩa kiểu dữ liệu cho mảng products 
+    onRemove: (id: number) => void // định nghĩa kiểu dữ liệu cho hàm onRemove
 }
 
-const ProductPage = (props: IProps) => {
+const ProductPage = (props: IProps) => { // khai báo kiểu dữ liệu cho props
     /*
         {
             products:[
@@ -18,7 +14,7 @@ const ProductPage = (props: IProps) => {
             ]
         }
     */
-    const [data, setData] = useState<IProduct[]>([])
+    const [data, setData] = useState<IProduct[]>([]) //khởi taọ state data với kiểu dữ liệu của data là mảng IProduct
     useEffect(() => {
         setData(props.products)
     }, [props])
